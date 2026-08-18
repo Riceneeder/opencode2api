@@ -7,6 +7,8 @@ WORKDIR /app
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
-EXPOSE 8080 8081
+# Back4app exposes a single PORT env var; we use combined mode to serve
+# both API and WebUI on that one port.
+EXPOSE 8080
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
