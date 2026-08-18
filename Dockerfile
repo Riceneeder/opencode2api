@@ -7,6 +7,9 @@ WORKDIR /app
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
+COPY go.mod ./
+RUN go mod tidy
+
 COPY . .
 
 # Back4app exposes a single PORT env var; we use combined mode to serve
